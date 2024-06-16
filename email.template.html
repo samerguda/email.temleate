@@ -4,106 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Template</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .email-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .copy-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .copy-button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
-
-
-<style>
-    body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-.container {
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-.email-content {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-}
-
-.email-content ul {
-    list-style-type: disc;
-    margin-left: 20px;
-}
-
-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #009879;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #007a63;
-}
-
-</style>
 <body>
-    <div class="container">
-        <h1>Email Template</h1>
-        <div class="email-content" id="emailContent">
-            <p><strong>Subject:</strong> Inquiry About Required Documents for Master's in Project Management Application</p>
-            <p>Dear [Admissions Office/Recipient's Name],</p>
-            <p>My name is [Your Name], and I am writing to express my interest in applying for the Master's in Project Management program at [University Name]. I have reviewed the program details on your website and am very excited about the prospect of furthering my education at your esteemed institution.</p>
-            <p>To ensure that my application is complete and accurately reflects my qualifications, I would like to request a detailed list of the required documents needed to apply for this program. Specifically, I am interested in understanding the following:</p>
-            <ul>
-                <li>Application form requirements</li>
-                <li>Academic transcripts and degree certificates</li>
-                <li>Statement of purpose or personal statement</li>
-                <li>Letters of recommendation</li>
-                <li>Proof of English proficiency (if applicable, and if IELTS/TOEFL can be waived)</li>
-                <li>Curriculum Vitae (CV) or resume</li>
-                <li>Any additional documents or prerequisites specific to the Master's in Project Management program</li>
-            </ul>
-            <p>Furthermore, I would appreciate any information on the application deadlines and any special instructions for international students.</p>
-            <p>Thank you very much for your time and assistance. I look forward to your response and am eager to take the next steps in the application process.</p>
-            <p>Best regards,</p>
-            <p>[Your Full Name]<br>
-            [Your Contact Information]<br>
-            [Your Address]<br>
-            [Your Email Address]<br>
-            [Your Phone Number]</p>
-        </div>
-        <button onclick="copyEmail()">Copy</button>
+    <div class="email-container" id="emailContent">
+        <p><strong>Subject:</strong> Inquiry About Required Documents for Master's in Project Management Application</p>
+
+        <p>Dear Sir,</p>
+
+        <p>I hope this email finds you well.</p>
+
+        <p>My name is Samer, and I am interested in applying for the Master's in Project Management program . I am writing to inquire about the specific documents required to complete the application process for this program.</p>
+
+        <p>Could you please provide me with a detailed list of the required documents and any additional information or requirements I should be aware of? Additionally, I would appreciate any guidance on deadlines and the application fee.</p>
+
+        <p>Thank you very much for your time and assistance. I look forward to your response.</p>
+
+        <p>Best regards,</p>
+
+        <p>Samer Alsaadni<br>
+        Saudi Arabia<br>
+        samerguda@gmail.com<br>
+        +966548247897</p>
     </div>
-    <script src="script.js"></script>
+    <button class="copy-button" onclick="copyEmailContent()">Copy Email</button>
 
     <script>
-        function copyEmail() {
-    const emailContent = document.getElementById('emailContent');
-    const range = document.createRange();
-    range.selectNode(emailContent);
-    window.getSelection().removeAllRanges(); // clear current selection
-    window.getSelection().addRange(range); // to select text
-    try {
-        document.execCommand('copy');
-        alert('Email content copied to clipboard!');
-    } catch (err) {
-        alert('Failed to copy email content');
-    }
-    window.getSelection().removeAllRanges(); // clear selection
-}
-
+        function copyEmailContent() {
+            var emailContent = document.getElementById('emailContent').innerText;
+            var textarea = document.createElement('textarea');
+            textarea.value = emailContent;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Email content copied to clipboard.');
+        }
     </script>
 </body>
 </html>
